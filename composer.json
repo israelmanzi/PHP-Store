@@ -4,7 +4,7 @@
     "license": "Apache License",
     "autoload": {
         "psr-4": {
-            "Israelmanzi\\PhpStore\\": "src/"
+            "Israelmanzi\\PhpStore\\": "./"
         }
     },
     "authors": [
