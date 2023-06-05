@@ -4,7 +4,7 @@ class Util
 {
     public static function getDb()
     {
-        $db = new PDO('pgsql:host=localhost;dbname=php-store', 'postgres', 'israel1108!');
+        $db = new PDO('pgsql:host=host;dbname=php-store', 'username', 'password');
         return $db;
     }
 
