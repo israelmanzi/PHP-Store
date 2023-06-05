@@ -16,6 +16,14 @@ use Valitron\Validator;
 
 $app = AppFactory::create();
 
+$app->add(function ($request, $response, $next) {
+    $response = $next($request, $response);
+    return $response
+        ->withHeader('Access-Control-Allow-Origin', '*')
+        ->withHeader('Access-Control-Allow-Methods', 'GET, POST')
+        ->withHeader('Access-Control-Allow-Headers', 'Content-Type');
+});
+
 $app->get('/', function (Request $request, Response $response, $args) {
     $response->getBody()->write(json_encode(['message' => 'Welcome to PHP-Store API!']));
     return $response->withHeader('Content-Type', 'application/json');
