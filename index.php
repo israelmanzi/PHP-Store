@@ -32,11 +32,12 @@ $app->post('/product/create', function (Request $request, Response $response, $a
     $v->rule('min', 'tax', 0.01);
     $v->rule('max', 'tax', 100);
 
+    
     if (!$v->validate()) {
         $response->getBody()->write(json_encode(['message' => $v->errors()]));
         return $response->withHeader('Content-Type', 'application/json');
     }
-
+    
     $data['tax'] = $data['tax'] / 100;
 
     $product = new Models\Product($data['name'], $data['amount'], $data['description'], $data['category'], $data['tax'], $data['quantity']);

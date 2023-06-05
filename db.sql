@@ -17,14 +17,17 @@ CREATE TABLE products (
     name VARCHAR(255) NOT NULL,
     description TEXT,
     tax DECIMAL(10, 2) NOT NULL,
-    amount DECIMAL(10, 2) NOT NULL,
-    category_id uuid REFERENCES categories(id),
+    amount MONEY NOT NULL,
+	quantity INT NOT NULL,
+    category_id uuid REFERENCES categories(id) ON DELETE CASCADE,
 	created_at TIMESTAMP DEFAULT NOW()
 );
 
 CREATE TABLE purchases (
     id uuid DEFAULT uuid_generate_v4 () PRIMARY KEY,
-    product_id uuid REFERENCES products(id),
+    product_id uuid NOT NULL,
     purchase_date TIMESTAMP DEFAULT NOW(),
-    quantity INT NOT NULL
+    amount MONEY NOT NULL,
+	quantity INT NOT NULL
 );
+
