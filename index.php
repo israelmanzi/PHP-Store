@@ -20,7 +20,7 @@ $app->add(function ($request, $response, $next) {
     $response = $next($request, $response);
     return $response
         ->withHeader('Access-Control-Allow-Origin', '*')
-        ->withHeader('Access-Control-Allow-Methods', 'GET, POST')
+        ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE')
         ->withHeader('Access-Control-Allow-Headers', 'Content-Type');
 });
 
